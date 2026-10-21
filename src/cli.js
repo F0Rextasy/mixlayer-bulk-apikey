@@ -441,7 +441,7 @@ async function baseline(exit, box) {
 /**
  * A recycled gmail box is full of other panels' mail — lamp spam, SHEIN ads,
  * other panels' codes. Only the panel's own sender is accepted (its mail reads
- * `<code> is your verification code` from `notifications@mixlayer.com`), so a
+ * `<code> is your verification code` from `notifications@<panel-mail>`), so a
  * stray 6-digit number can never be typed into Clerk.
  */
 const isBrandMail = (from, subject) => /mixlayer|clerk/i.test(`${from} ${subject}`);

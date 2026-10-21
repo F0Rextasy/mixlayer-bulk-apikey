@@ -70,7 +70,7 @@ Doğrulama varsayılanı içerik veya akıl yürütmeyle 200 yanıtı verir:
 
 ```bash
 curl https://mixlayer.ai/v1/chat/completions \
-  -H "Authorization: Bearer sk_mxl_1OPE0pEo…" -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_KEY" -H "Content-Type: application/json" \
   -d '{"model":"qwen/qwen3.5-4b-free","messages":[{"role":"user","content":"hi"}],"max_tokens":16}'
 ```
 
@@ -82,7 +82,7 @@ Kimlik doğrulama şekli: her istekte bir bearer token (`Authorization: Bearer <
 
 ```python
 from openai import OpenAI
-c = OpenAI(base_url="https://mixlayer.ai/v1", api_key="sk_mxl_1OPE0pEo…")
+c = OpenAI(base_url="https://mixlayer.ai/v1", api_key="YOUR_KEY")
 print(c.chat.completions.create(model="qwen/qwen3.5-4b-free",
       messages=[{"role":"user","content":"hi"}]).choices[0].message.content)
 ```
