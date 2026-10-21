@@ -111,7 +111,7 @@ Le lanceur demande la liste de proxys (facultative — sans elle, le CLI s'exéc
 
 ## ✅ Vérifié fonctionnel — chaque clé est testée
 
-Toutes les vérifications ci-dessous ont été exécutées le **2026-10-21** depuis le CLI livré (sortie du pool : WARP via `socks5h://127.0.0.1:40000`).
+Toutes les vérifications ci-dessous ont été exécutées le **2026-10-21** depuis le CLI livré (sortie du pool : proxy via `socks5h://127.0.0.1:40000`).
 
 | Vérification | Résultat |
 | --- | --- |

@@ -111,7 +111,7 @@ node src/cli.js --screen         # test the exit list against the console + API
 
 ## ✅ 已验证可用 — 每个密钥都经过测试
 
-以下所有检查均于 **2026-10-21** 在随附的 CLI 上运行（代理池出口：通过 `socks5h://127.0.0.1:40000` 的 WARP）。
+以下所有检查均于 **2026-10-21** 在随附的 CLI 上运行（代理池出口：通过 `socks5h://127.0.0.1:40000` 的 proxy）。
 
 | 检查 | 结果 |
 | --- | --- |

@@ -111,7 +111,7 @@ The launcher asks for the proxy list (optional — without one the CLI runs dire
 
 ## ✅ Verified working — every key is tested
 
-All checks below ran on **2026-10-21** from the shipped CLI (pool exit: WARP over `socks5h://127.0.0.1:40000`).
+All checks below ran on **2026-10-21** from the shipped CLI (pool exit: proxy over `socks5h://127.0.0.1:40000`).
 
 | Check | Result |
 | --- | --- |

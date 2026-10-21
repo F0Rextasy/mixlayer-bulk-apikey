@@ -111,7 +111,7 @@ Başlatıcı proxy listesini (isteğe bağlı — olmadan CLI doğrudan çalış
 
 ## ✅ Çalıştığı doğrulandı — her anahtar test edilir
 
-Aşağıdaki tüm kontroller **2026-10-21** tarihinde gönderilen CLI üzerinde çalıştırıldı (havuz çıkışı: `socks5h://127.0.0.1:40000` üzerinden WARP).
+Aşağıdaki tüm kontroller **2026-10-21** tarihinde gönderilen CLI üzerinde çalıştırıldı (havuz çıkışı: `socks5h://127.0.0.1:40000` üzerinden proxy).
 
 | Kontrol | Sonuç |
 | --- | --- |

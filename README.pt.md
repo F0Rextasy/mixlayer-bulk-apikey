@@ -111,7 +111,7 @@ O launcher pede a lista de proxies (opcional — sem uma, o CLI roda direto) e a
 
 ## ✅ Verificado e funcionando — toda chave é testada
 
-Todas as verificações abaixo rodaram em **2026-10-21** a partir do CLI fornecido (saída do pool: WARP sobre `socks5h://127.0.0.1:40000`).
+Todas as verificações abaixo rodaram em **2026-10-21** a partir do CLI fornecido (saída do pool: proxy sobre `socks5h://127.0.0.1:40000`).
 
 | Verificação | Resultado |
 | --- | --- |

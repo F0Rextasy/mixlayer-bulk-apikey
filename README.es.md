@@ -111,7 +111,7 @@ El lanzador pide la lista de proxies (opcional — sin una, el CLI se ejecuta di
 
 ## ✅ Verificado y funcionando — cada clave se prueba
 
-Todas las comprobaciones siguientes se ejecutaron el **2026-10-21** desde el CLI incluido (salida del pool: WARP sobre `socks5h://127.0.0.1:40000`).
+Todas las comprobaciones siguientes se ejecutaron el **2026-10-21** desde el CLI incluido (salida del pool: proxy sobre `socks5h://127.0.0.1:40000`).
 
 | Comprobación | Resultado |
 | --- | --- |

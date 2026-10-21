@@ -111,7 +111,7 @@ Der Launcher fragt nach der Proxy-Liste (optional — ohne eine läuft die CLI d
 
 ## ✅ Verifiziert funktionierend — jeder Schlüssel wird getestet
 
-Alle Prüfungen unten liefen am **2026-10-21** aus der ausgelieferten CLI (Pool-Exit: WARP über `socks5h://127.0.0.1:40000`).
+Alle Prüfungen unten liefen am **2026-10-21** aus der ausgelieferten CLI (Pool-Exit: proxy über `socks5h://127.0.0.1:40000`).
 
 | Prüfung | Ergebnis |
 | --- | --- |
