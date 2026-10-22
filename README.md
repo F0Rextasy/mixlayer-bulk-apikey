@@ -55,7 +55,7 @@ node src/cli.js --verify-only     # every key in keys.txt is re-tested with a re
 
 ## 🤖 Models — all 6 of them
 
-`GET /v1/models` returned **6 ids** on a live key (2026-10-21):
+`GET /v1/models` returned **6 ids** on a verified keys (2026-10-21):
 
 | Model ID | note |
 | --- | --- |
