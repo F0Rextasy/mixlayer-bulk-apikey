@@ -112,6 +112,11 @@ The launcher asks for the proxy list (optional — without one the CLI runs dire
 
 ## ✅ Verified working — every key is tested
 
+> **Quality gates.** Every key here passed a live `chat-200` before it was written to `keys.txt`
+> (dead keys are never shipped). Router combos follow the same rule at the model level: an entry is
+> added **only if the model answers `chat-200` and can call tools** — a model without tool support,
+> a dead key or a dead provider is dropped instead of added. Works with **9Router and OmniRoute**.
+
 All checks below ran on **2026-10-21** from the shipped CLI (pool exit: proxy over `socks5h://127.0.0.1:40000`).
 
 | Check | Result |
@@ -209,7 +214,6 @@ node src/connect-9router.js --base http://localhost:20128 --password 123456
 ```
 
 Defaults: `--prefix mixlayer`, `--base-url https://mixlayer.ai/v1`, `--model qwen/qwen3.5-4b-free`. Models are served as `mixlayer/<model id>`. The CLI can do the same in one shot: `node src/cli.js --connect-9router`.
-
 
 ## 🔌 Connect to OmniRoute
 

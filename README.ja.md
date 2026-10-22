@@ -18,6 +18,7 @@
 [![License](https://img.shields.io/badge/license-MIT-6ea8fe?style=for-the-badge)](LICENSE)
 [![Models](https://img.shields.io/badge/models-6%20served-412991?style=for-the-badge)](https://mixlayer.ai)
 [![9Router](https://img.shields.io/badge/9Router-connector-8B5CF6?style=for-the-badge)](#-connect-to-9router)
+[![OmniRoute](https://img.shields.io/badge/OmniRoute-connector-8B5CF6?style=for-the-badge)](#-connect-to-omniroute)
 [![X](https://img.shields.io/badge/X-%40bigbullapp-000000?style=for-the-badge&logo=x&logoColor=white)](https://x.com/bigbullapp)
 
 [🛠 クイックスタート](#-quick-start) · [🎁 無料枠](#-free-tier--how-much-you-get) · [🤖 モデル](#-models--all-6-of-them) · [🧪 API の使い方](#-how-to-use-the-api) · [✅ 検証済み](#-verified-working--every-key-is-tested) · [🧭 仕組み](#-how-it-works) · [🔌 9Router](#-connect-to-9router) · [⚙️ オプション](#️-cli-options) · [🛰️ プロキシ](#️-behind-a-proxy) · [🐞 問題](#-issues)
@@ -210,6 +211,15 @@ node src/connect-9router.js --base http://localhost:20128 --password 123456
 
 デフォルト: `--prefix mixlayer`、`--base-url https://mixlayer.ai/v1`、`--model qwen/qwen3.5-4b-free`。モデルは `mixlayer/<model id>` として提供されます。CLI でもワンショットで同じことができます: `node src/cli.js --connect-9router`。
 
+## 🔌 OmniRoute に接続
+
+[OmniRoute](https://omniroute.online) はセルフホスト型の OpenAI 互換ルーターです:
+
+```bash
+node src/connect-omniroute.js --base http://localhost:20128 --password 123456
+```
+
+デフォルト: `--prefix mixlayer`、`--base-url https://mixlayer.ai/v1`、`--model qwen/qwen3.5-4b-free`。モデルは `mixlayer/<model id>` として提供されます。CLI でもワンショットで同じことができます: `node src/cli.js --connect-omniroute`。
 ## 🔑 1 つのキーで得られるもの
 
 | | |
