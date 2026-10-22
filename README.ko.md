@@ -97,6 +97,7 @@ print(c.chat.completions.create(model="qwen/qwen3.5-4b-free",
 cd mixlayer-bulk-apikey
 printf 'socks5://host:port\n' > proxies.txt   # 선택 사항 — 없으면 도구는 직접 연결로 실행
 node src/launcher.js        # 대화형: 발급 / 검증 / 스크린 / 설정
+
 # 또는 직접:
 node src/cli.js --count 1        # 실제 Chrome에서 Clerk 가입 한 번
 node src/cli.js --verify-only    # keys.txt에 이미 있는 모든 키 재검증

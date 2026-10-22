@@ -97,6 +97,7 @@ Kredisiz bir ücretli model HTTP 400 `{"error":{"type":"billing_error","code":"i
 cd mixlayer-bulk-apikey
 printf 'socks5://host:port\n' > proxies.txt   # isteğe bağlı — olmadan araç doğrudan çalışır
 node src/launcher.js        # etkileşimli: üret / doğrula / tara / ayarlar
+
 # veya doğrudan:
 node src/cli.js --count 1        # gerçek bir Chrome'da bir Clerk kaydı
 node src/cli.js --verify-only    # keys.txt içinde zaten bulunan her anahtarı yeniden test et

@@ -97,6 +97,7 @@ Ein kostenpflichtiges Modell ohne Guthaben antwortet mit HTTP 400 `{"error":{"ty
 cd mixlayer-bulk-apikey
 printf 'socks5://host:port\n' > proxies.txt   # optional — without it the tool runs direct
 node src/launcher.js        # interactive: mint / verify / screen / settings
+
 # or directly:
 node src/cli.js --count 1        # one Clerk sign-up in a real Chrome
 node src/cli.js --verify-only    # re-test every key already in keys.txt
