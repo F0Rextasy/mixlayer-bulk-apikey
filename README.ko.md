@@ -167,7 +167,7 @@ node src/cli.js --help
 | `--count N` | `1` | 발급할 계정 수, 직렬 |
 | `--model <id>` | `qwen/qwen3.5-4b-free` | 실시간 게이트에 사용되는 모델 |
 | `--pool <file>` | `proxies.txt` | 출구 풀, 프록시당 한 줄 — 선택 사항 |
-| `--tries N` | `3` | 계정당 검증할 출구 후보 |
+| `--exits N` | `6` | 계정당 검증할 출구 후보 |
 | `--mint-tries N` | `3` | 출구당 전체 가입 시도 (매번 새 메일박스) |
 | `--gap MS` | `4000` | 계정 간 일시 정지 |
 | `--code-timeout S` | `300` | 메일박스 시도당 이메일 코드 대기 시간(초) |

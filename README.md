@@ -171,7 +171,7 @@ node src/cli.js --help
 | `--count N` | `1` | accounts to mint, serial |
 | `--model <id>` | `qwen/qwen3.5-4b-free` | model used for the live gate |
 | `--pool <file>` | `proxies.txt` | exit pool, one line per proxy — optional |
-| `--tries N` | `3` | exit candidates vetted per account |
+| `--exits N` | `6` | exit candidates vetted per account |
 | `--mint-tries N` | `3` | full sign-up attempts per exit (fresh mailbox each) |
 | `--gap MS` | `4000` | pause between accounts |
 | `--code-timeout S` | `300` | seconds to wait for the e-mail code, per mailbox attempt |

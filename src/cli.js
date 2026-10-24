@@ -29,7 +29,7 @@
  *   --count N        accounts (= keys) to mint, serial                     [1]
  *   --model <id>     model used for the live gate      [qwen/qwen3.5-4b-free]
  *   --pool <file>    proxy list, one exit per line (env MIXLAYER_PROXIES) [optional]
- *   --tries N        exit candidates vetted per account                    [3]
+ *   --exits N        exit candidates vetted per account                    [6]
  *   --mint-tries N   full sign-up attempts (fresh mailbox + Chrome) per exit  [3]
  *   --gap MS         pause between accounts                                [4000]
  *   --timeout MS     per-request timeout (node side)                      [60000]
@@ -92,7 +92,7 @@ if (has('help') || has('h')) {
   --count N      accounts to mint, serial                                [1]
   --model <id>   model used for the live gate       [qwen/qwen3.5-4b-free]
   --pool <file>  proxy list, one exit per line (env MIXLAYER_PROXIES)  [optional]
-  --tries N      exit candidates vetted per account                      [3]
+  --exits N      exit candidates vetted per account                      [6]
   --code-timeout S  seconds to wait for the e-mail code, per mailbox try  [300]
   --mint-tries N full sign-up attempts (fresh mailbox each) per exit      [3]
   --keys <file>  key file for --verify-only                [keys.txt]
@@ -112,7 +112,7 @@ run still works where the network reaches console.mixlayer.com.
 
 const COUNT = Math.max(1, parseInt(arg('count', '1'), 10) || 1);
 const MODEL = arg('model', process.env.MIXLAYER_MODEL || FREE_MODEL);
-const TRIES = Math.max(1, parseInt(arg('tries', '3'), 10) || 3);
+const EXITS = Math.max(1, parseInt(arg('exits', '6'), 10) || 6);
 const GAP_MS = Math.max(0, parseInt(arg('gap', '4000'), 10) || 0);
 const TIMEOUT_MS = Math.max(5000, parseInt(arg('timeout', '60000'), 10) || 60000);
 const CODE_TIMEOUT_MS = Math.max(30000, (parseInt(arg('code-timeout', '300'), 10) || 300) * 1000);
@@ -643,7 +643,8 @@ async function mintOnExit(n, exit) {
 }
 
 async function attemptAccount(n, exits, seed) {
-  const limit = Math.min(TRIES, exits.length);
+  const limit = Math.min(EXITS, exits.length);
+  let deadCandidates = 0;
   for (let t = 0; t < limit; t++) {
     const exit = exits[(seed + t) % exits.length];
     let vet;
@@ -655,23 +656,27 @@ async function attemptAccount(n, exits, seed) {
     if (!vet.ok) {
       log(`account ${n}: exit ${labelOf(exit)} failed the vet (${vet.why}) — trying the next one`);
       ledger({ account: n, exit: labelOf(exit), class: 'exit-vet', detail: vet.why });
+      deadCandidates++;
       continue;
     }
     log(`account ${n}: exit pinned ${labelOf(exit)} (vet ${vet.ms}ms)`);
     // The mailbox rail is the flaky half: a dead box costs one full attempt,
     // then the next try builds a new box (and a new Chrome) on the same exit.
+    let exitDead = 0;
     for (let m = 1; m <= MINT_TRIES; m++) {
       try {
-        return await mintOnExit(n, exit);
+        return { rec: await mintOnExit(n, exit) };
       } catch (e) {
         const cls = classify(e);
+        if (cls === 'exit') exitDead++;
         log(`account ${n}: ${cls} failed (try ${m}/${MINT_TRIES}) — ${String(e.message).slice(0, 150)}`);
         ledger({ account: n, exit: labelOf(exit), class: cls, stage: e.mxStage, try: m, detail: String(e.message).slice(0, 300) });
         if (m < MINT_TRIES && GAP_MS) await sleep(GAP_MS);
       }
     }
+    if (exitDead === MINT_TRIES) deadCandidates++;
   }
-  return null;
+  return { rec: null, allTransportDead: deadCandidates > 0 && deadCandidates === limit };
 }
 
 // ------------------------------------------------------------ key handling
@@ -781,15 +786,22 @@ async function proveKey(exit, key, { attempts = 2 } = {}) {
 async function mint(exits) {
   log(`mixlayer mint · ${COUNT} account(s) · model ${MODEL} · exits ${exits.filter(Boolean).length || 'direct'} · keys land in ${KEYS_FILE}`);
   let made = 0;
+  const routes = Math.min(EXITS, exits.length);
+  let transportDead = 0;
   for (let i = 0; i < COUNT; i++) {
-    const rec = await attemptAccount(i + 1, exits, i);
+    const out = await attemptAccount(i + 1, exits, i);
     // mintOnExit has already recorded the account (key + gate result) in
     // accounts.json; keys.txt is the only file written here.
-    if (rec) {
-      appendKey(rec.key);
+    if (out.rec) {
+      appendKey(out.rec.key);
       made++;
-    }
+    } else if (out.allTransportDead) transportDead++;
     if (i < COUNT - 1 && GAP_MS) await sleep(GAP_MS);
+  }
+  if (!made && transportDead === COUNT) {
+    const route = exits[0] === null ? 'direct mode (no proxy list)' : `${exits.length}-exit pool`;
+    console.error(`[fatal] no usable route — ${COUNT} account(s) × ${routes} candidate(s) over ${route}: every attempt died at the transport layer.`);
+    process.exit(1);
   }
   log(`done — ${made}/${COUNT} key(s) written to ${KEYS_FILE}`);
   process.exit(made === COUNT ? 0 : 1);

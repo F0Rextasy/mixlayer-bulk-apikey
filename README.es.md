@@ -167,7 +167,7 @@ node src/cli.js --help
 | `--count N` | `1` | cuentas a acuñar, en serie |
 | `--model <id>` | `qwen/qwen3.5-4b-free` | modelo usado para la puerta en vivo |
 | `--pool <file>` | `proxies.txt` | pool de salidas, una línea por proxy — opcional |
-| `--tries N` | `3` | candidatos de salida evaluados por cuenta |
+| `--exits N` | `6` | candidatos de salida evaluados por cuenta |
 | `--mint-tries N` | `3` | intentos completos de registro por salida (buzón nuevo cada vez) |
 | `--gap MS` | `4000` | pausa entre cuentas |
 | `--code-timeout S` | `300` | segundos de espera del código por correo, por intento de buzón |

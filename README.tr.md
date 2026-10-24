@@ -167,7 +167,7 @@ node src/cli.js --help
 | `--count N` | `1` | üretilecek hesap sayısı, sıralı |
 | `--model <id>` | `qwen/qwen3.5-4b-free` | canlı kapı için kullanılan model |
 | `--pool <file>` | `proxies.txt` | çıkış havuzu, satır başına bir proxy — isteğe bağlı |
-| `--tries N` | `3` | hesap başına denetlenen çıkış adayı |
+| `--exits N` | `6` | hesap başına denetlenen çıkış adayı |
 | `--mint-tries N` | `3` | çıkış başına tam kayıt denemesi (her seferinde yeni posta kutusu) |
 | `--gap MS` | `4000` | hesaplar arası bekleme |
 | `--code-timeout S` | `300` | posta kutusu denemesi başına e-posta kodunu bekleme saniyesi |

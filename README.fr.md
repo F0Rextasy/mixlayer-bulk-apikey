@@ -167,7 +167,7 @@ node src/cli.js --help
 | `--count N` | `1` | comptes à générer, en série |
 | `--model <id>` | `qwen/qwen3.5-4b-free` | modèle utilisé pour la barrière en direct |
 | `--pool <file>` | `proxies.txt` | pool de sorties, une ligne par proxy — facultatif |
-| `--tries N` | `3` | candidats de sortie validés par compte |
+| `--exits N` | `6` | candidats de sortie validés par compte |
 | `--mint-tries N` | `3` | tentatives d'inscription complètes par sortie (nouvelle boîte mail à chaque fois) |
 | `--gap MS` | `4000` | pause entre les comptes |
 | `--code-timeout S` | `300` | secondes d'attente du code e-mail, par tentative de boîte mail |

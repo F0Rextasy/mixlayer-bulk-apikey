@@ -167,7 +167,7 @@ node src/cli.js --help
 | `--count N` | `1` | Anzahl der zu erzeugenden Konten, seriell |
 | `--model <id>` | `qwen/qwen3.5-4b-free` | Modell für das Live-Gate |
 | `--pool <file>` | `proxies.txt` | Exit-Pool, eine Zeile pro Proxy — optional |
-| `--tries N` | `3` | pro Konto geprüfte Exit-Kandidaten |
+| `--exits N` | `6` | pro Konto geprüfte Exit-Kandidaten |
 | `--mint-tries N` | `3` | vollständige Registrierungsversuche pro Exit (jeweils frisches Postfach) |
 | `--gap MS` | `4000` | Pause zwischen Konten |
 | `--code-timeout S` | `300` | Sekunden Wartezeit auf den E-Mail-Code, pro Postfach-Versuch |
