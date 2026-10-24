@@ -39,6 +39,7 @@
  *   --headless       run Chrome headless (visible Chrome is the tested rail)
  *   --browser <exe>  Chrome binary (env CHROME_PATH)                     [auto]
  *   --debug-port N   Chrome DevTools port — a free nonzero one by default
+ *   --auto           headless-friendly alias (launcher passes it; no prompts ever)   
  *   --verify-only    re-run every key in the key file through the chat gate
  *   --screen         only test the proxy list (console + API reachability)
  *   --connect-9router  register this provider (and its keys) on a local 9Router
@@ -120,6 +121,7 @@ const MINT_TRIES = Math.max(1, parseInt(arg('mint-tries', '3'), 10) || 3);
 /** The chat gate must fail fast: a hung exit costs this per candidate model. */
 const GATE_MS = Math.max(15000, Math.min(TIMEOUT_MS, 45000));
 const KEY_NAME = arg('key-name', 'mixlayer-1');
+const AUTO = has('auto');
 const VERIFY_ONLY = has('verify-only');
 const SCREEN = has('screen');
 const CONNECT_9ROUTER = has('connect-9router');
